@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project>
+  
+  <target name="clean" >
+    <delete dir="build" />
+    <delete dir="doc" />
+  </target>
+
+  <target name="build" >
+    <mkdir dir="build/classes" />
+    <javac srcdir="src" destdir="build/classes" debug="true" debuglevel="lines,vars,source" >
+    </javac>
+  </target>
+
+  <target name="jar" >
+    <antcall target="build" />
+    <mkdir dir="build/jar" />
+    <!-- TODO cambiar el nombre del JAR -->
+    <jar destfile="build/jar/proyecto.jar" basedir="build/classes" >
+      <manifest >
+  <attribute name="DependencyFinder" value="main" />
+  <!-- TODO SET MAIN CLASS -->
+  <attribute name="Main-Class" value="modelado.fciencias.programa.Proyecto" />
+      </manifest >
+    </jar >
+  </target>
+
+  <target name="run" >
+    <!-- TODO usar el nombre del JAR que será generado -->
+    <java jar="build/jar/proyecto.jar" fork="true" >
+    </java>
+  </target >
+
+  <!-- para generar los test -->
+   <target name="tst" >
+    <antcall target="build" />
+    <mkdir dir="build/tst" />
+    <!-- TODO cambiar el nombre del JAR -->
+    <jar destfile="build/jar/prueba.tst" basedir="build/classes" >
+      <manifest >
+  <attribute name="DependencyFinder" value="main" />
+  <!-- TODO SET MAIN CLASS -->
+  <attribute name="Main-Class" value="modelado.fciencias.pruebas.Prueba" />
+      </manifest >
+    </jar >
+  </target>
+
+  <target name="test" >
+    <!-- TODO usar el nombre del JAR que será generado -->
+    <java jar="build/jar/prueba.test" fork="true" >
+    </java>
+  </target >
+
+  <!-- generar la documentacion -->
+  <target name="doc" >
+    <mkdir dir="doc" />
+    <!-- TODO usar nombres apropiados para la documentación -->
+    <javadoc sourcepath="src" destdir="doc" access="private" windowtitle="proyecto" doctitle="proyecto" author="true" version="true" >
+      <classpath >
+      </classpath >
+    </javadoc>
+  </target >
+
+
+ 
+  
+</project>
