@@ -35,9 +35,9 @@
   <!-- para generar los test -->
    <target name="tst" >
     <antcall target="build" />
-    <mkdir dir="build/tst" />
+    <mkdir dir="build/jar" />
     <!-- TODO cambiar el nombre del JAR -->
-    <jar destfile="build/jar/prueba.tst" basedir="build/classes" >
+    <jar destfile="build/jar/prueba.jar" basedir="build/classes" >
       <manifest >
   <attribute name="DependencyFinder" value="main" />
   <!-- TODO SET MAIN CLASS -->
@@ -48,7 +48,7 @@
 
   <target name="test" >
     <!-- TODO usar el nombre del JAR que será generado -->
-    <java jar="build/jar/prueba.test" fork="true" >
+    <java jar="build/jar/prueba.jar" fork="true" >
     </java>
   </target >
 
