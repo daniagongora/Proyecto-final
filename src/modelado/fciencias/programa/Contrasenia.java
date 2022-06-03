@@ -16,6 +16,7 @@ public class Contrasenia{
 	 * -to-generate-secure-password-hash-md5-sha-pbkdf2-bcrypt-examples/
 	 */
 	public static String crearContrasenia(String conUsuario) throws Exception{
+		
 		String conRequerida = null;
 
 		MessageDigest proceso = MessageDigest.getInstance("SHA-256");
