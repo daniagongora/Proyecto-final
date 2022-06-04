@@ -22,17 +22,7 @@ public class Proyecto{
     	}
 		if (args[0].equals("c")) {
       		System.out.println("esto debe codificar");
-      		try{
-			
-			String clave = Contrasenia.crearContrasenia("prueba123");
-			BigInteger llave = new BigInteger(clave, 16);
-
-			PolinomioAleatorio polinomioAleatorio = new PolinomioAleatorio(5, 3, llave);
-			BigInteger[] polinomio = polinomioAleatorio.generaEnteros(llave);
-		
-		}catch(Exception e){
-			System.out.println("ocurrio un error al generar la contraseña");
-		}
+      		
     	}
     	if(args[0].equals("d")){
     		System.out.println("esto debe decodificar");

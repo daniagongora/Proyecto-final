@@ -40,7 +40,7 @@ public class Documentos{
     	
     	for (String cadena : leido) {
     		guardado += cadena + "\n";
-       	}
+    	}
     	
     	Files.write(rutaGuardar, guardado.getBytes());
 	}
