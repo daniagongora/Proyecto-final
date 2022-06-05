@@ -15,6 +15,7 @@ public class Documentos{
 	 * Método para leer el documento reibido
 	 * @param ruta la ruta dada del documento
 	 * @return la lista documento, que contiene las lineas de texto.
+	 * https://www.logicbig.com/how-to/code-snippets/jcode-java-io-files-write.html
 	 */
 	public static List<String> leerDocumento(String ruta) throws IOException{
 		
@@ -32,6 +33,7 @@ public class Documentos{
 	 * Método para guardar un documento dado
 	 * @param ruta la ruta en donde guardar el documento
 	 * @param leido la lista que contiene la información del documento
+	 * https://www.logicbig.com/how-to/code-snippets/jcode-java-io-files-write.html
 	 */
 	public static void guardarDocumento(String ruta, List<String> leido) throws IOException{
 		

@@ -26,6 +26,10 @@ y depués
 ```
 java -jar build/jar/proyecto.jar (el argumento que se necesiten 'c' o 'd') 
 ```
+Si se quiere cifrar(argumento 'c')
+```
+java -jar build/jar/proyecto.jar c nombreDelArchivoAGuardar numeroDeEvaluaciones numeroMinimodeEv NombreDelArchivoOriginal 
+```
 
 Para correr la pruebas es necesario poner:
 

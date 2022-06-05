@@ -1,12 +1,15 @@
 package modelado.fciencias.programa;
 import java.math.BigInteger;
 import java.util.Random;
-import java.util.ArrayList;
+import java.util.List;
+import java.util.*;
 
 /**
  * Clase para generar el polinomio
  * con numeros enteros aleatorios
- *
+ * estructura del polinomio
+ *  https://github.com/terappy/ShamirSecretSharing/blob
+/master/src/main/java/scheme/SecretShare.java
  **/
 public class PolinomioAleatorio{
 
@@ -44,6 +47,8 @@ private int nPuntos;
      * de los coeficientes del polinomio
      * @param llave el termino independiente del polinomio
      * @return un arreglo de estos enteros
+     * https://github.com/RicoVergara94/ShamirsSecretSharingAlgo
+     /blob/main/src/main/java/Polynomial.java
      **/
     public BigInteger[] generaEnteros(BigInteger llave){
         
@@ -57,4 +62,41 @@ private int nPuntos;
         coeficientes[coeficientes.length-1] = llave;
         return coeficientes;
     }
+    /**
+     * Método de avalucaiones de horner
+     * para dar la n parejas ordenadas.
+     */
+    public List<BigInteger> horner(){
+        
+        List<BigInteger> parejasOrdenadas = new LinkedList<>();
+
+        for (int i = 1; i <= nPuntos; i++) {
+            BigInteger resultado = new BigInteger(String.valueOf(i));
+            parejasOrdenadas.add(resultado);
+            BigInteger resultado2 = auxiliarHorner(i);
+            parejasOrdenadas.add(resultado2);
+        }
+
+        return parejasOrdenadas;
+    }
+    /*
+    * Método auxiliarHorner que realiza la evaluación en el polinomio
+    * del punto recibido.
+    */
+    private BigInteger auxiliarHorner(int evaluacion){
+        
+        BigInteger numero = new BigInteger(String.valueOf(evaluacion));
+        BigInteger resultado = new BigInteger("0");
+        for (int i = 0; i < enteros.length; i++) {
+            
+            BigInteger multiplicacion = resultado.multiply(numero);
+            BigInteger modulo = multiplicacion.mod(primo);
+            BigInteger suma = modulo.add(enteros[i]);
+            BigInteger sumaModulo = suma.mod(primo);
+            resultado = sumaModulo;
+        }
+        return resultado;
+  }
+
+  
 }

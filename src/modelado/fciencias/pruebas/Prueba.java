@@ -12,5 +12,8 @@ public class Prueba{
 		PruebaDocumentos.pruebaGuardar();
 		PruebaDocumentos.pruebaLeerDocumentos();
 		PruebaPolinomio.pruebaGeneraEnteros();
+		PruebaCifrador.pruebaQuitarRuta();
+		PruebaCifrador.pruebaEncriptaDoc();
+		PruebaCifrador.pruebaEncriptar();
 	}
 }
