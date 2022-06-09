@@ -201,7 +201,7 @@ public class Cifrar{
         try {
             textoOriginal = Documentos.leerDocumento(docOriginal);
         } catch(IOException e) {
-            System.err.println("Archivo" + e.getMessage() + "no encontrado o inexistente.");
+            System.out.println("Archivo" + e.getMessage() + "no encontrado o inexistente.");
         }
 
         /* Se encripta el documento*/
