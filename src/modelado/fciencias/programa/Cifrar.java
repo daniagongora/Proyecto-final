@@ -40,19 +40,21 @@ public class Cifrar{
     /**
      * Recibe la contraseña del usuario de forma que no 
      * hace eco en la terminal 
+     * @return la contraseña dada por el usuario
      */
     public String obtenerContrasenia() throws Exception{
         
         char[] contrasenaUsr = null;
         Console entrada;
         String contrasena = null;
-        
-            entrada = System.console();
+        entrada = System.console();
+            
             if (entrada != null) {
                 contrasenaUsr = entrada.readPassword("Ingrese una contraseña: ");
             }
-            contrasena = String.valueOf(contrasenaUsr);
-            return contrasena;
+        
+        contrasena = String.valueOf(contrasenaUsr);
+        return contrasena;
     }
     
     /**
@@ -68,7 +70,7 @@ public class Cifrar{
             System.out.println("Se requieren al menos 2 puntos");
             System.exit(1);
         }
-        else if (minPuntos <= 1 || minPuntos > nPuntos) {
+        else if (minPuntos > nPuntos) {
             System.out.println("los puntos minimos deben ser menores a los totales");
           System.exit(1);
         }
@@ -84,15 +86,18 @@ public class Cifrar{
         
         List<String> archivoCifrado = new LinkedList<>();
         archivoCifrado.add(ruta);
+        
         try {
             for (String linEncp : archivo) {
           
                 String linCifrada = encriptar(contrasenia, linEncp);
                 archivoCifrado.add(linCifrada);
             }
-        } catch(Exception e) {
+        
+        }catch(Exception e) {
             System.out.println("Error al encriptar el archivo.");
         }
+        
         return archivoCifrado;
     }
     
@@ -101,24 +106,16 @@ public class Cifrar{
      * @param llave la llave para encriptar (la contrasenia)
      * @param texto el texto a encriptar
      * @return el texto encriptado
+     * 
     */ 
     public String encriptar(String llave, String texto) throws Exception {
         
-        /* De String hexadecimal a arreglo de tipo byte. */
-        /* https://stackoverflow.com/questions/140131/convert-a-string-
-        representation-of-a-hex-dump-to-a-byte-array-using-java 
-        https://www.geeksforgeeks.org/java-program-to-convert-hex-string-to-byte-array/*/
-        
         byte[] clave = new byte[llave.length() / 2];
+        
         for (int i = 0; i < clave.length; i++) {
             int numAByte = Integer.parseInt(llave.substring(2 * i, 2 * i + 2), 16);
             clave[i] = (byte) numAByte;
         }
-
-        /* Ciframos el texto con AES https://www.section.io/engineering-education/implementing-
-        aes-encryption-and-decryption-in-java/ 
-        https://stackoverflow.com/questions/20770072/aes-cbc-pkcs5padding-vs-aes-cbc-
-        pkcs7padding-with-256-key-size-performance-java*/
         
         Cipher proceso = Cipher.getInstance("AES/ECB/PKCS5Padding");
         SecretKeySpec esconder = new SecretKeySpec(clave, "AES");
@@ -133,6 +130,7 @@ public class Cifrar{
      * @param horner las lista de paejas de las evaluaciones
      */
     public List<String> acomodaPuntos(List<BigInteger> horner){
+        
         List<String> parejasOrdena = new LinkedList<>();
         String encontrar = "(";
         for (BigInteger cordenada : horner) {
@@ -161,7 +159,6 @@ public class Cifrar{
         evaluaciones = Integer.parseInt(args[2]);
         minimos = Integer.parseInt(args[3]);
 
-        /*Verifica que los números para las evaluaciones esten correctamente dados*/
         try {
             verificarArgs(args);
 
@@ -170,10 +167,8 @@ public class Cifrar{
             System.exit(1);
         }
 
-        /*quita la ruta del documentos para manejar con mayor facilidad*/
         String rutaDoc = quitarRuta(docOriginal);
       
-        /* Obtener contraseña usuario. */
         String contrasenia="";
         try {
             contrasenia = obtenerContrasenia();
@@ -182,7 +177,6 @@ public class Cifrar{
             System.out.println("Formato inválido de contraseña.");
         }
 
-        /* Generamos contraseña segura con la clae Contrasenia */
         String contraseniaSegura = "";
         try {
             contraseniaSegura = Contrasenia.crearContrasenia(contrasenia);
@@ -201,13 +195,11 @@ public class Cifrar{
         try {
             textoOriginal = Documentos.leerDocumento(docOriginal);
         } catch(IOException e) {
-            System.out.println("Archivo" + e.getMessage() + "no encontrado o inexistente.");
+            System.out.println("Archivo" + e.getMessage() + "no encontrado");
         }
 
-        /* Se encripta el documento*/
         List<String> archivoAES = encriptaDoc(rutaDoc, textoOriginal, contraseniaSegura);
 
-        /* Guardamos el documento encrptado y las n evaluaciones. */
         try {
            
             String docCifrado = archivoEvaluaciones + ".aes";
@@ -218,9 +210,8 @@ public class Cifrar{
         } catch(IOException e) {
             e.getMessage();
         }
-
-        return;
+        System.out.println("Tu documento se cifro exitosamente");
     
-
+        return;
     }
 }

@@ -9,7 +9,7 @@ import java.util.*;
  * con numeros enteros aleatorios
  * estructura del polinomio
  *  https://github.com/terappy/ShamirSecretSharing/blob
-/master/src/main/java/scheme/SecretShare.java
+ * /master/src/main/java/scheme/SecretShare.java
  **/
 public class PolinomioAleatorio{
 
@@ -48,7 +48,7 @@ private int nPuntos;
      * @param llave el termino independiente del polinomio
      * @return un arreglo de estos enteros
      * https://github.com/RicoVergara94/ShamirsSecretSharingAlgo
-     /blob/main/src/main/java/Polynomial.java
+     *   /blob/main/src/main/java/Polynomial.java
      **/
     public BigInteger[] generaEnteros(BigInteger llave){
         
@@ -62,6 +62,7 @@ private int nPuntos;
         coeficientes[coeficientes.length-1] = llave;
         return coeficientes;
     }
+    
     /**
      * Método de avalucaiones de horner
      * para dar la n parejas ordenadas.
@@ -79,6 +80,7 @@ private int nPuntos;
 
         return parejasOrdenadas;
     }
+    
     /*
     * Método auxiliarHorner que realiza la evaluación en el polinomio
     * del punto recibido.

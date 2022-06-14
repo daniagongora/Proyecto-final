@@ -45,6 +45,7 @@ public class PruebaCifrador{
 			if(cifrador.encriptaDoc("prueba.txt", texto, contrasenia).contains("prueba.txt")){
 				System.out.println("paso la prueba de encriptar el documento original");
 			}
+		
 		}catch(Exception e){
 			System.out.println("algo salio mal");
 		}
@@ -56,6 +57,7 @@ public class PruebaCifrador{
 	public static void pruebaEncriptar(){
 
 		String contrasenia = null;
+		
 		try{
 			contrasenia = Contrasenia.crearContrasenia("prueba123");
 			String prueba = "Hola soy una prueba";

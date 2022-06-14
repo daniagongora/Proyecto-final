@@ -6,24 +6,13 @@ import java.util.List;
 import java.io.IOException;
 import java.util.*;
 import java.io.*;
+
 /**
  * Clase para leer y guardar el documento
  * con la información a esconder
  */
 public class Documentos{
 
-
-	/*public static List<String> leerDocumento(String ruta) throws IOException{
-		
-		List<String> leido = new LinkedList<>();
-    	Path rutaRecuperada = Paths.get(ruta);
-    	
-    	for (String cadena : Files.readAllLines(rutaRecuperada)) {
-      		leido.add(cadena);
-    	}
-   		
-   		return leido;
-	}*/
 	/**
 	 * Método para leer el documento reibido
 	 * @param ruta la ruta dada del documento
@@ -37,6 +26,7 @@ public class Documentos{
     	File documento = new File(ruta);
     	BufferedReader doc = new BufferedReader(new FileReader(documento));
     	String info;
+    	
     	while ((info = doc.readLine()) != null) {
       		leido.add(info);
     	}

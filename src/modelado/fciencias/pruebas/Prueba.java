@@ -6,6 +6,9 @@ import modelado.fciencias.programa.Contrasenia;
  */
 public class Prueba{
 
+	/**
+	 * Clase para correr todas las pruebas de cada clase
+	 */
 	public static void main (String[] args){
 
 		PruebaContrasenia.pruebaCrearContrasenia();
@@ -15,5 +18,6 @@ public class Prueba{
 		PruebaCifrador.pruebaQuitarRuta();
 		PruebaCifrador.pruebaEncriptaDoc();
 		PruebaCifrador.pruebaEncriptar();
+	
 	}
 }
