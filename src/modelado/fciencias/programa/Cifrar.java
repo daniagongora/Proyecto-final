@@ -110,12 +110,18 @@ public class Cifrar{
     */ 
     public String encriptar(String llave, String texto) throws Exception {
         
+        /*https://stackoverflow.com/questions/140131/convert-a-string-representation
+        -of-a-hex-dump-to-a-byte-array-using-java
+        https://www.geeksforgeeks.org/java-program-to-convert-hex-string-to-byte-array/*/
         byte[] clave = new byte[llave.length() / 2];
         
         for (int i = 0; i < clave.length; i++) {
             int numAByte = Integer.parseInt(llave.substring(2 * i, 2 * i + 2), 16);
             clave[i] = (byte) numAByte;
         }
+        
+        /*https://stackoverflow.com/questions/20770072/aes-cbc-pkcs5padding-vs-aes-cbc
+        -pkcs7padding-with-256-key-size-performance-java*/
         
         Cipher proceso = Cipher.getInstance("AES/ECB/PKCS5Padding");
         SecretKeySpec esconder = new SecretKeySpec(clave, "AES");
@@ -148,6 +154,9 @@ public class Cifrar{
     /**
     * Método para cifrar el documento 
     * @param args la entrada de consola
+    * y todos los métodos auxiliares se basaron en
+    * https://github.com/Armando122/Proyectos-Modelado-y-Programacion
+    * /blob/master/esquema_shamir/src/main/java/com/MyP/proyecto/EsquemaShamir.java
     */
     public void cifrar(String args[]) throws Exception{
         
