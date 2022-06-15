@@ -207,6 +207,7 @@ public class Cifrar{
             
             contraseniaSegura = Contrasenia.crearContrasenia(contrasenia);
             
+            
         } catch(Exception e) {
             
             System.out.println("Error al generar contraseña.");
@@ -214,6 +215,7 @@ public class Cifrar{
         
         /* Creamos el polinomio con los valores de la consola con PolinomioAleatorio*/
         BigInteger realContrasenia = new BigInteger(contraseniaSegura, 16);
+        System.out.println(realContrasenia);
         PolinomioAleatorio polinomio = new PolinomioAleatorio(minimos, evaluaciones, realContrasenia);
         List<BigInteger> parejasnEval = polinomio.horner();
         List<String> parejasOrdenadas = acomodaPuntos(parejasnEval);

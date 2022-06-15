@@ -4,7 +4,7 @@ Proyecto final de modelado y programación.
 
 ### Requisitos
 
-Se necesita instalar java(yo tengo hasta java 13 asi que supongo que ese) y se necesita instalar ant, para
+Se necesita instalar java1 3 y se necesita instalar ant, para
 instalar ant en ubuntu es necesario abrir la terminal y poner los siguientes comandos:
 
 ```

@@ -6,7 +6,7 @@ package modelado.fciencias.programa;
 
 public class Proyecto{
     public static void main (String[] args){		
-        if (args.length==0 || args.length < 4) {
+        if (args.length==0 || args.length < 2) {
             System.out.println("no diste argumentos suficientes");
             System.exit(1);
     	}
@@ -23,7 +23,12 @@ public class Proyecto{
     	}
         
     	if(args[0].equals("d")){
-            System.out.println("esto debe decodificar");
+            Descifrar descifrado=new Descifrar();
+            try{
+            descifrado.desencriptaDoc("final.txt.frg","final.txt.aes");
+        }catch(Exception e){
+        	System.out.println("algo salio mal al descifrar");
+        }
     	}
     	
     }
