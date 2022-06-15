@@ -9,7 +9,7 @@
 
   <target name="build" >
     <mkdir dir="build/classes" />
-    <javac srcdir="src" destdir="build/classes" debug="true" debuglevel="lines,vars,source" >
+    <javac srcdir="src" destdir="build/classes" debug="true" includeantruntime="true" >
     </javac>
   </target>
 
@@ -35,9 +35,9 @@
   <!-- para generar los test -->
    <target name="tst" >
     <antcall target="build" />
-    <mkdir dir="build/tst" />
+    <mkdir dir="build/jar" />
     <!-- TODO cambiar el nombre del JAR -->
-    <jar destfile="build/jar/prueba.tst" basedir="build/classes" >
+    <jar destfile="build/jar/prueba.jar" basedir="build/classes" >
       <manifest >
   <attribute name="DependencyFinder" value="main" />
   <!-- TODO SET MAIN CLASS -->
@@ -48,7 +48,9 @@
 
   <target name="test" >
     <!-- TODO usar el nombre del JAR que será generado -->
-    <java jar="build/jar/prueba.tst" fork="true" >
+
+    <java jar="build/jar/prueba.jar" fork="true" >
+
     </java>
   </target >
 
