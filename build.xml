@@ -48,7 +48,9 @@
 
   <target name="test" >
     <!-- TODO usar el nombre del JAR que será generado -->
+
     <java jar="build/jar/prueba.jar" fork="true" >
+
     </java>
   </target >
 

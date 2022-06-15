@@ -10,8 +10,7 @@ import java.math.BigInteger;
 public class PruebaContrasenia{
 
 	/**
-	 * Prueba 
-	 * @Test
+	 * Prueba para probar el mpetodo crearContrasenia()
 	 */
 	 
 	public static void pruebaCrearContrasenia(){
