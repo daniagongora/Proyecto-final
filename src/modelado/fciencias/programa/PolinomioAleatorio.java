@@ -1,7 +1,5 @@
 package modelado.fciencias.programa;
 import java.math.BigInteger;
-import java.util.Random;
-import java.util.List;
 import java.util.*;
 
 /**
@@ -13,20 +11,20 @@ import java.util.*;
  **/
 public class PolinomioAleatorio{
 
-//número primo para el modulo
-private BigInteger primo = new BigInteger("208351617316091241234326746312124448251235562226470491514186331217050270460481");
+    //número primo para el modulo
+    private final BigInteger primo = new BigInteger("208351617316091241234326746312124448251235562226470491514186331217050270460481");
 
-//la llave del polinomio la cual será la que sea creada en contraseña
-private BigInteger llave;
+    //la llave del polinomio la cual será la que sea creada en contraseña
+    private BigInteger llave;
 
-//puntos del polinomio  
-private int puntos;
+    //puntos del polinomio  
+    private final int puntos;
 
-//coeficientes enteros del polinomio
-private BigInteger[] enteros;
+    //coeficientes enteros del polinomio
+    private final BigInteger[] enteros;
 
-//los puntos necesarios para evualuar el polinomio
-private int nPuntos;
+    //los puntos necesarios para evualuar el polinomio
+    private final int nPuntos;
     
     /**
      * Constructor de la clase que genera un polinomio
@@ -42,6 +40,7 @@ private int nPuntos;
         this.enteros = generaEnteros(clave);
         
     }
+    
     /**
      * Método que genera los números enteros
      * de los coeficientes del polinomio
@@ -64,21 +63,23 @@ private int nPuntos;
     }
     
     /**
-     * Método de avalucaiones de horner
+     * Método de evalucaiones de horner
      * para dar la n parejas ordenadas.
+     * @return lista con las evaluaciones de hornes
      */
     public List<BigInteger> horner(){
         
         List<BigInteger> parejasOrdenadas = new LinkedList<>();
 
         for (int i = 1; i <= nPuntos; i++) {
+            
             BigInteger resultado = new BigInteger(String.valueOf(i));
-            parejasOrdenadas.add(resultado);
+            parejasOrdenadas.add(resultado);           
             BigInteger resultado2 = auxiliarHorner(i);
             parejasOrdenadas.add(resultado2);
         }
-
         return parejasOrdenadas;
+        
     }
     
     /*
@@ -89,16 +90,15 @@ private int nPuntos;
         
         BigInteger numero = new BigInteger(String.valueOf(evaluacion));
         BigInteger resultado = new BigInteger("0");
-        for (int i = 0; i < enteros.length; i++) {
+        for (BigInteger entero : enteros) {
             
             BigInteger multiplicacion = resultado.multiply(numero);
             BigInteger modulo = multiplicacion.mod(primo);
-            BigInteger suma = modulo.add(enteros[i]);
+            BigInteger suma = modulo.add(entero);
             BigInteger sumaModulo = suma.mod(primo);
             resultado = sumaModulo;
+            
         }
         return resultado;
-  }
-
-  
+    }
 }
