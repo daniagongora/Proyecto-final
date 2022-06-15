@@ -35,7 +35,7 @@ public class Cifrar{
         return rutaDoc;  
     }
 
-    //**
+    /**
      * Recibe la contraseña del usuario de forma que no 
      * hace eco en la terminal 
      * @return la contrasenia dada por el usuario
@@ -144,7 +144,7 @@ public class Cifrar{
         return Base64.getEncoder().encodeToString(bytesTexto);
     }
     
-    //**
+    /**
      * Método para ordenar los puntos de las evaluaciones
      * @param horner las lista de paejas de las evaluaciones
      * @return una lista tipo "List" con los puntos y evaluaciones ordenados
@@ -220,7 +220,6 @@ public class Cifrar{
         
         /* Creamos el polinomio con los valores de la consola con PolinomioAleatorio*/
         BigInteger realContrasenia = new BigInteger(contraseniaSegura, 16);
-        System.out.println(realContrasenia);
         PolinomioAleatorio polinomio = new PolinomioAleatorio(minimos, evaluaciones, realContrasenia);
         List<BigInteger> parejasnEval = polinomio.horner();
         List<String> parejasOrdenadas = acomodaPuntos(parejasnEval);
@@ -255,11 +254,11 @@ public class Cifrar{
 
             
         }         
-
-        }
         System.out.println("Tu documento se cifro exitosamente");
     
         return;
+        }
+        
 
-    }
+    
 }

@@ -22,16 +22,15 @@ public class Descifrar {
     public void desencriptaDoc(String shares, String encriptado) throws Exception {
         
         List<String> archivoDescifrado =  new LinkedList<>();
+        
         try{
         List<String> cifrado = Documentos.leerDocumento(encriptado);  
         String ruta = cifrado.get(0);
         cifrado.remove(0);
         String clave = RecuperaContrasenia.recuperaContrasenia(shares).toString(16);
-        System.out.println(clave);
         
         for(int i = 0; i < cifrado.size();i++){
             String linDes = desencriptar(clave, cifrado.get(i));
-            System.out.println(linDes);
             archivoDescifrado.add(linDes);
         }
         
@@ -71,17 +70,20 @@ public class Descifrar {
     }
     
     /**
-     * Metodo main para probar la desencriptacion
+     * Metodo para usar en el main para descifra
      * @param args argumentos de consola 
      * @throws Exception en caso de algun error 
      */
-    public void prueba() throws Exception{
+    public void descifrar (String args[])throws Exception{
+        
+        String evaluaciones = args[1];
+        String cifrado = args[2];
+        
         try{
-            String contrasenia=Contrasenia.crearContrasenia("hola");
-            String prueba=desencriptar(contrasenia,"l1cClCM2D1CDPFjKsGxJeA==");
-            System.out.println(prueba);
+            desencriptaDoc(evaluaciones, cifrado);
+            System.out.println("Tu documento se descifro exitosamente");
         }catch(Exception e){
-
+            System.out.println("Salio algo mal en el encriptado");
         }
     }
 }
